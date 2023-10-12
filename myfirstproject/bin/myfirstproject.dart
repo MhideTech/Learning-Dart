@@ -73,10 +73,32 @@ void main() {
   print(nums);
 
   // enums
+
+  // Nullables and null safety
+  // Null aware operators(?. and ??): tells dart we are trying to create a variable that might be a null
+  // Null assertion (!): tells the compiler a nullable value is not null
+  String? namee;
+  print(namee); // null
+  // print(namee!.length); // error (Null check operator used on a null value)
+
+  print(namee?.length ?? 0); // prints zero if namee.length is equals to null
+
+  var person1 = PersonNull("Hephz");
+  var person2 = PersonNull.name();
+  print(person1.name);
+  print(person2.name);
 }
 
 class Person {
   String name;
 
   Person(this.name);
+}
+
+// Class with Nullable
+class PersonNull {
+  String? name;
+
+  PersonNull(this.name);
+  PersonNull.name({this.name}); // {} helps to avoid error and print null if argument is absent in the constructor
 }
