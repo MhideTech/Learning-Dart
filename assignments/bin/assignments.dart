@@ -66,5 +66,43 @@ void main() {
     int sum = text.length;
     print("We have $sum number of characters in $text");
   }
+
   characterCount("My name is Mhizta Orlah");
+
+  /* 
+    11 October 2023
+    Objective Questions 
+  */
+
+  // What is the difference between a nullable and non-nullable type?
+
+
+  // What are benefits of using null safety?
+
+
+  // How do you declare a nullable variable in Dart?
+
+
+  // How do you check if a variable is null?
+
+
+  // How do you safely access the value of a null variable?
+
+
+  // What is the difference between null and undefined?
+
+
+  // What is the ! operator and how is it used with nullables?
+
+
+  // What is the difference between ? and !.? operators?
+
+
+  // What is the ?? operator and how is it used with nullables?
+
+
+  // What is the late keyword and how is it used with nullables?
+
+
+  
 }
