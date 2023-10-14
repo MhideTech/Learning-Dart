@@ -64,7 +64,7 @@ void main() {
 
   void characterCount(String text) {
     int sum = text.length;
-    print("We have $sum number of characters in $text");
+    print("We have $sum number of characters in \"$text\"");
   }
 
   characterCount("My name is Mhizta Orlah");
@@ -104,5 +104,5 @@ void main() {
   // What is the late keyword and how is it used with nullables?
 
 
-  
+
 }
