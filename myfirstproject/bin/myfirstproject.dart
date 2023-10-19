@@ -1,3 +1,5 @@
+import 'dart:math';
+
 void main() {
   print("Hello world");
 
@@ -87,6 +89,30 @@ void main() {
   var person2 = PersonNull.name();
   print(person1.name);
   print(person2.name);
+
+  // 4.8989
+  int a = 2;
+  int b = 5;
+  int c = 3;
+
+  double result = (-b + (sqrt((b * b) - (4 * a * c)))) / (2 * a);
+  print(result);
+
+
+  int d = 15;
+  double half = d / 2;
+  for (int i = 2; i <= half; i++) {
+    if (d % i == 0) {
+      print('$d is not a prime number');
+      break;
+    }
+
+    if (i == (d ~/ 2)) {
+      print('$d is a prime number');
+      break;
+    }
+  }
+
 }
 
 class Person {
@@ -100,5 +126,6 @@ class PersonNull {
   String? name;
 
   PersonNull(this.name);
-  PersonNull.name({this.name}); // {} helps to avoid error and print null if argument is absent in the constructor
+  PersonNull.name(
+      {this.name}); // {} helps to avoid error and print null if argument is absent in the constructor
 }
