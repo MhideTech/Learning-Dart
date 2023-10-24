@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:io';
 
 void main() {
   print("Hello world");
@@ -98,7 +99,6 @@ void main() {
   double result = (-b + (sqrt((b * b) - (4 * a * c)))) / (2 * a);
   print(result);
 
-
   int d = 15;
   double half = d / 2;
   for (int i = 2; i <= half; i++) {
@@ -113,6 +113,10 @@ void main() {
     }
   }
 
+  // Collecting User Input
+  stdout.write('Salary: ');
+  final double input = double.parse(stdin.readLineSync()!);
+  print(input);
 }
 
 class Person {
@@ -128,4 +132,18 @@ class PersonNull {
   PersonNull(this.name);
   PersonNull.name(
       {this.name}); // {} helps to avoid error and print null if argument is absent in the constructor
+}
+
+class PersonFunc {
+  final String name;
+  final int age;
+  final bool isSensible;
+  int? parentAge;
+
+  PersonFunc({
+    required this.name,
+    required this.age,
+    required this.isSensible,
+    required this.parentAge,
+  });
 }
