@@ -107,6 +107,7 @@ void main() {
 
   /* 
     11 October 2023 
-    Create 15 functions of required named, optional named and required positional parameters
+    1. Create 15 functions of required named, optional named and required positional parameters
+    2. Recharge card with if-else and switch statement
   */
 }
