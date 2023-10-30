@@ -112,22 +112,104 @@ void main() {
     2. Recharge card with if-else and switch statement
   */
 
-  // printOrder(item: "Widget", price: 12.99);
+  printOrder(item: "Widget", price: 12.99);
 
-  // printGreeting("Alice"); // Uses the default title.
-  // printGreeting("Bob", "Dr."); // Provides a custom title.
+  printGreeting("Alice"); // Uses the default title.
+  printGreeting("Bob", "Dr."); // Provides a custom title.
 
-  // sendMail(
-  //     to: 'oladipupoibrahim20@gmail.com',
-  //     subject: 'Application open for Java Developer',
-  //     body:
-  //         'We are in need of a Java Developer with experience with Spring Boot. If this mail finds you well, please do well to send your resume.');
+  sendMail(
+      to: 'oladipupoibrahim20@gmail.com',
+      subject: 'Application open for Java Developer',
+      body:
+          'We are in need of a Java Developer with experience with Spring Boot. If this mail finds you well, please do well to send your resume.');
 
-  // order(item: 'Laptop', quantity: 5);
+  order(item: 'Laptop', quantity: 5);
 
-  // areaOfARectangle(10, 5);
+  areaOfARectangle(10, 5);
 
+  // stdout.write(
+  //   'Welcome to Aptech Network Services. Choose an option to get started. \n1. Buy Airtime \n2. Buy Data \n');
+  // final int option = int.parse(stdin.readLineSync()!);
+  // if (option == 1) {
+  //   stdout.write('Enter an amount: \n');
+  //   final int amount = int.parse(stdin.readLineSync()!);
+  //   stdout.write('Enter your phone number: \n');
+  //   final int number = int.parse(stdin.readLineSync()!);
+  //   print(
+  //     '$amount naira airtime has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+  // } else if (option == 2) {
+  //   stdout.write(
+  //     'Choose a plan \n 1. #100 - 100mb \n 2. #500 - 2.5gb \n 3. #1000 - 1tb \n 4. #1500 - 1tb\n');
+  //   final int plan = int.parse(stdin.readLineSync()!);
+  //   if (plan == 1) {
+  //     stdout.write('Enter your phone number: \n');
+  //     final int number = int.parse(stdin.readLineSync()!);
+  //     print(
+  //       '100mb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+  //   } else if (plan == 2) {
+  //     stdout.write('Enter your phone number: \n');
+  //     final int number = int.parse(stdin.readLineSync()!);
+  //     print(
+  //       '2.5gb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+  //   } else if (plan == 3) {
+  //     stdout.write('Enter your phone number: \n');
+  //     final int number = int.parse(stdin.readLineSync()!);
+  //     print(
+  //       '1tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+  //   }  else if (plan == 4) {
+  //     stdout.write('Enter your phone number: \n');
+  //     final int number = int.parse(stdin.readLineSync()!);
+  //     print(
+  //       '5tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+  //   }
+  // }
 
+  stdout.write(
+      'Welcome to Aptech Network Services. Choose an option to get started. \n1. Buy Airtime \n2. Buy Data \n');
+  final int option = int.parse(stdin.readLineSync()!);
+  switch (option) {
+    case 1:
+      stdout.write('Enter an amount: \n');
+      final int amount = int.parse(stdin.readLineSync()!);
+      stdout.write('Enter your phone number: \n');
+      final int number = int.parse(stdin.readLineSync()!);
+      print(
+          '$amount naira airtime has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+      break;
+    case 2:
+      stdout.write(
+          'Choose a plan \n 1. #100 - 100mb \n 2. #500 - 2.5gb \n 3. #1000 - 1tb\n');
+      final int plan = int.parse(stdin.readLineSync()!);
+      switch (plan) {
+        case 1:
+          stdout.write('Enter your phone number: \n');
+          final int number = int.parse(stdin.readLineSync()!);
+          print(
+              '100mb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+          break;
+        case 2:
+          stdout.write('Enter your phone number: \n');
+          final int number = int.parse(stdin.readLineSync()!);
+          print(
+              '2.5gb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+          break;
+        case 3:
+          stdout.write('Enter your phone number: \n');
+          final int number = int.parse(stdin.readLineSync()!);
+          print(
+              '1tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+          break;
+        case 4:
+          stdout.write('Enter your phone number: \n');
+          final int number = int.parse(stdin.readLineSync()!);
+          print(
+              '5tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+          break;
+        default:
+          print('Invalid option for data plan');
+      }
+      break;
+  }
 }
 
 void printOrder({String? item, int? quantity, double? price}) {
@@ -158,7 +240,7 @@ void sendMail({required String to, String? subject, required String body}) {
 
 void order({required String item, required int quantity}) {
   print(
-      'Order complete!. $quantity pieces of $item has been ordered successful. Please wait while we process your delivery...');
+    'Order complete!. $quantity pieces of $item has been ordered successful. Please wait while we process your delivery...');
 }
 
 void register(
