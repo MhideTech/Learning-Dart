@@ -114,9 +114,60 @@ void main() {
   }
 
   // Collecting User Input
-  stdout.write('Salary: ');
-  final double input = double.parse(stdin.readLineSync()!);
-  print(input);
+  // stdout.write('Salary: ');
+  // final double input = double.parse(stdin.readLineSync()!);
+  // print(input);
+
+  /*
+    30/10/2023
+    Collections
+  */
+
+  // Lists
+  List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  numbers.add(10);
+  numbers.insert(2, 90); // inserts a value of 90 at index of 2
+  numbers.addAll([
+    9,
+    10,
+    11,
+    12,
+    13,
+    5
+  ]); // adds all value in the iterable at the last index
+  numbers.insertAll(0, [
+    -3,
+    -2,
+    -1,
+    0
+  ]); // adds all values in the iterables at the specified index
+  numbers.remove(2); // remove the first occurence of a value
+  numbers.removeAt(4); // removes the value at the specified index
+  print(numbers);
+  numbers.removeWhere((nums) =>
+      nums ==
+      5); // loops over the list and remove every occurence of the value of the callback
+  print(numbers);
+  numbers.removeRange(0,
+      4); // removes the values from starting index to ending index but does not include ending index
+  print(numbers);
+
+  // Sets
+  Set<String> fruits = {'apple', 'banana', 'pineapple', 'plantain'};
+  print(fruits.contains('apple'));
+  fruits.add('grape');
+  fruits.remove('banana');
+  print(fruits);
+  print(fruits.length);
+
+  // Maps
+  Map<String, int> ages = {'John': 25, 'Dami': 26, 'IB': 27, 'Tomiwa': 28};
+  print(ages['John']); // accessing a value using the key John
+  ages['Dami'] = 30;
+  ages.remove('Tomiwa'); // removes a key-value pair from a map
+  print(ages.keys); // print a list of all keys inside a parenthesis
+  print(ages.values); // print a list of all values inside a parenthesis
+  print(ages);
 }
 
 class Person {
