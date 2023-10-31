@@ -164,6 +164,7 @@ void main() {
   //   }
   // }
 
+  /*
   stdout.write(
       'Welcome to Aptech Network Services. Choose an option to get started. \n1. Buy Airtime \n2. Buy Data \n');
   final int option = int.parse(stdin.readLineSync()!);
@@ -210,6 +211,7 @@ void main() {
       }
       break;
   }
+  */
 
   // Assignment 4
   /*
@@ -218,7 +220,23 @@ void main() {
     3. make research on forEach, map, remove and update (map)
   */
 
-  
+  List<String> names = [
+    "Olamide",
+    "IB",
+    "Divine",
+    "Tomiwa",
+    "Fredrick",
+    "Shalom"
+  ];
+  names.add("Okoh");
+  names.insert(names.length, "Esther");
+  names.addAll(["Ridwan", "Samson"]);
+  names.insertAll(0, ["Mhizta", "Orlah"]);
+  names.remove("Mhizta");
+  names.removeAt(10);
+  names.removeWhere((name) => name == "Ridwan");
+  names.removeRange(0, 2);
+  print(names);
 }
 
 void printOrder({String? item, int? quantity, double? price}) {
@@ -249,7 +267,7 @@ void sendMail({required String to, String? subject, required String body}) {
 
 void order({required String item, required int quantity}) {
   print(
-    'Order complete!. $quantity pieces of $item has been ordered successful. Please wait while we process your delivery...');
+      'Order complete!. $quantity pieces of $item has been ordered successful. Please wait while we process your delivery...');
 }
 
 void register(
