@@ -126,6 +126,8 @@ void main() {
   // Lists
   List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8];
   numbers.add(10);
+  numbers[7] = 89; // another way to add or update an element using index
+  print(numbers);
   numbers.insert(2, 90); // inserts a value of 90 at index of 2
   numbers.addAll([
     9,
@@ -151,6 +153,7 @@ void main() {
   numbers.removeRange(0,
       4); // removes the values from starting index to ending index but does not include ending index
   print(numbers);
+  // numbers.map((e) => null);
 
   // Sets
   Set<String> fruits = {'apple', 'banana', 'pineapple', 'plantain'};
@@ -168,6 +171,22 @@ void main() {
   print(ages.keys); // print a list of all keys inside a parenthesis
   print(ages.values); // print a list of all values inside a parenthesis
   print(ages);
+  // ages.update(key, (value) => null);
+  // ages.map((key, value) => null);
+  // ages.addEntries(newEntries);
+
+  Map<String, int> originalMap = {
+    'apple': 2,
+    'banana': 3,
+    'cherry': 4,
+  };
+
+  // Using the map method to double the values in the original map
+  Map<String, int> doubledMap = originalMap.map((key, value) {
+    return MapEntry(key, value * 2);
+  });
+
+  print(doubledMap);
 }
 
 class Person {
