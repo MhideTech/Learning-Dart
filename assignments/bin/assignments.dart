@@ -210,6 +210,15 @@ void main() {
       }
       break;
   }
+
+  // Assignment 4
+  /*
+    1. Create a list of string and use all the methods we learnt in class
+    2. create a set of integer or double and use all the methods as well
+    3. make research on forEach, map, remove and update (map)
+  */
+
+  
 }
 
 void printOrder({String? item, int? quantity, double? price}) {
