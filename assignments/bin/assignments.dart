@@ -237,6 +237,14 @@ void main() {
   names.removeWhere((name) => name == "Ridwan");
   names.removeRange(0, 2);
   print(names);
+
+  Set<int> numbers = {1, 2, 3, 4, 5, 6};
+  numbers.add(7);
+  numbers.add(8);
+  numbers.remove(8);
+  numbers.addAll({7, 8, 9});
+  print(numbers.contains(6));
+  print(numbers);
 }
 
 void printOrder({String? item, int? quantity, double? price}) {
