@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'dart:math';
+
+import 'package:test/test.dart';
 
 void main() {
   print('Hello world');
@@ -245,6 +248,8 @@ void main() {
   numbers.addAll({7, 8, 9});
   print(numbers.contains(6));
   print(numbers);
+
+  BankApp account1 = BankApp();
 }
 
 void printOrder({String? item, int? quantity, double? price}) {
@@ -311,5 +316,398 @@ void greeting(String name, {String? greeting}) {
     print('$greeting $name 👋👋👋');
   } else {
     print('Hello $name. It\'s nice to have you');
+  }
+}
+
+class BankApp {
+  String? name;
+  int? dateOfBirth;
+  int? monthOfBirth;
+  int? yearOfBirth;
+  int? age;
+  int? phoneNumber;
+  String? gender;
+  double accountBalance = 10000.00;
+
+  int accountNumber = Random().nextInt(10);
+
+  int? pin;
+
+  BankApp() {
+    register();
+  }
+
+  void register() {
+    try {
+      stdout.write('Enter your name: ');
+      final String userName = stdin.readLineSync()!;
+      name = userName;
+
+      try {
+        stdout.write('Enter your date of birth: ');
+        final int date = int.parse(stdin.readLineSync()!);
+        dateOfBirth = date;
+      } on FormatException {
+        print('Invalid Input, try again');
+        stdout.write('Enter your date of birth: ');
+        final int date = int.parse(stdin.readLineSync()!);
+        dateOfBirth = date;
+      } catch (e) {
+        print('Something went wrong! Try again');
+      }
+
+      try {
+        stdout.write('Enter your month of birth: ');
+        final int month = int.parse(stdin.readLineSync()!);
+        monthOfBirth = month;
+      } on FormatException {
+        print('Invalid Input, try again');
+        stdout.write('Enter your month of birth: ');
+        final int month = int.parse(stdin.readLineSync()!);
+        monthOfBirth = month;
+      } catch (e) {
+        print('Something went wrong! Try again');
+      }
+
+      try {
+        stdout.write('Enter your birth year: ');
+        final int year = int.parse(stdin.readLineSync()!);
+        yearOfBirth = year;
+      } on FormatException {
+        print('Invalid Input, try again');
+        stdout.write('Enter your birth year: ');
+        final int year = int.parse(stdin.readLineSync()!);
+        yearOfBirth = year;
+      } catch (e) {
+        print('Something went wrong! Try again');
+      }
+
+      try {
+        stdout.write('Enter your phone Number: ');
+        final int phoneNo = int.parse(stdin.readLineSync()!);
+
+        if (phoneNo < 7000000000 && phoneNo > 9999999999) {
+          print('Invalid phone number, try again');
+        } else if (phoneNo > 7000000000 && phoneNo < 9999999999) {
+          phoneNumber = phoneNo;
+        } else {
+          print('Phone Number must be equals to 11 digits');
+          stdout.write('Enter your phone Number: ');
+          final int phoneNo = int.parse(stdin.readLineSync()!);
+
+          if (phoneNo < 7000000000 && phoneNo > 9999999999) {
+            print('Invalid phone number, try again');
+          } else if (phoneNo > 7000000000 && phoneNo < 9999999999) {
+            phoneNumber = phoneNo;
+          } else {
+            return;
+          }
+        }
+      } on FormatException {
+        print('Phone number is not valid, try again');
+        stdout.write('Enter your phone Number: ');
+        final int phoneNo = int.parse(stdin.readLineSync()!);
+
+        if (phoneNo < 7000000000 && phoneNo > 9999999999) {
+          print('Invalid phone number, try again');
+        } else if (phoneNo > 7000000000 && phoneNo < 9999999999) {
+          phoneNumber = phoneNo;
+        } else {
+          print('Phone Number must be equals to 11 digits');
+          stdout.write('Enter your phone Number: ');
+          final int phoneNo = int.parse(stdin.readLineSync()!);
+
+          if (phoneNo < 7000000000 && phoneNo > 9999999999) {
+            print('Invalid phone number, try again');
+          } else if (phoneNo > 7000000000 && phoneNo < 9999999999) {
+            phoneNumber = phoneNo;
+          } else {
+            return;
+          }
+        }
+      } catch (e) {
+        print('Something went wrong');
+      }
+
+      stdout.write('Enter your gender: ');
+      final String sex = stdin.readLineSync()!;
+      gender = sex;
+
+      if (sex.toLowerCase() == 'male' ||
+          sex.toLowerCase() == 'female' ||
+          sex.toLowerCase() == 'm' ||
+          sex.toLowerCase() == 'f') {
+        gender = sex;
+      } else {
+        print('Invalid gender, try again');
+        stdout.write('Enter your gender: ');
+        final String sex = stdin.readLineSync()!;
+        if (sex.toLowerCase() == 'male' ||
+            sex.toLowerCase() == 'female' ||
+            sex.toLowerCase() == 'm' ||
+            sex.toLowerCase() == 'f') {
+          gender = sex;
+        } else {
+          return;
+        }
+      }
+
+      age = 2023 - yearOfBirth!;
+
+      if (age! > 18) {
+        createPin();
+        showDetails();
+
+        try {
+          stdout.write(
+              'Which operation would you like to perform: \n1. Transfer Money \n2. Buy Data \n3. Change Details \n4. Exit\t');
+          final int operation = int.parse(stdin.readLineSync()!);
+
+          if (operation == 1) {
+            transfer();
+          } else if (operation == 2) {
+            buyData();
+          } else if (operation == 3) {
+            changeDetails();
+          } else if (operation == 4) {
+            print(
+                'Thank you for using our Bank. We\'ll love to have you again');
+          } else {
+            print('Invalid Option');
+          }
+        } on FormatException {
+          print('Invalid input, try again');
+          stdout.write(
+              'Which operation would you like to perform: \n1. Transfer Money \n2. Buy Data \n3. Change Details \n4. Exit\t');
+          final int operation = int.parse(stdin.readLineSync()!);
+          if (operation == 1) {
+            transfer();
+          } else if (operation == 2) {
+            buyData();
+          } else if (operation == 3) {
+            changeDetails();
+          } else if (operation == 4) {
+            print(
+                'Thank you for using our Bank. We\'ll love to have you again');
+          } else {
+            print('Invalid Option');
+          }
+        } catch (e) {
+          print('Something went wrong');
+        }
+      } else {
+        print('You cannot proceed with the creation of the bank account.');
+      }
+    } catch (e) {
+      print('Error! Something went wrong');
+    }
+  }
+
+  void createPin() {
+    try {
+      stdout.write('Enter a four digit pin: \n');
+      int pinInput = int.parse(stdin.readLineSync()!);
+      if (pinInput > 1000 && pinInput < 9999) {
+        stdout.write('Confirm four digit pin: \n');
+        int confirmPinInput = int.parse(stdin.readLineSync()!);
+
+        if (pinInput == confirmPinInput) {
+          pin = pinInput;
+          print('Your pin as been set successfully');
+        } else {
+          print('Pin are not the same try again');
+        }
+
+        while (pinInput != confirmPinInput) {
+          stdout.write('Enter a four digit pin: \n');
+          pinInput = int.parse(stdin.readLineSync()!);
+          stdout.write('Confirm four digit pin: \n');
+          confirmPinInput = int.parse(stdin.readLineSync()!);
+        }
+      } else {
+        print('Pin should not be less or greater than 4 digits');
+        stdout.write('Enter a four digit pin: \n');
+        int pinInput = int.parse(stdin.readLineSync()!);
+        if (pinInput > 1000 && pinInput < 9999) {
+          print('yeah');
+        } else {
+          print('not valid');
+          return;
+        }
+      }
+    } on FormatException {
+      print('Pin should be a number');
+      stdout.write('Enter a four digit pin: \n');
+      int pinInput = int.parse(stdin.readLineSync()!);
+      if (pinInput > 1000 && pinInput < 9999) {
+        print('yeah');
+      } else {
+        print('Pin should not be less than 4 digits');
+        stdout.write('Enter a four digit pin: \n');
+        int pinInput = int.parse(stdin.readLineSync()!);
+        if (pinInput > 1000 && pinInput < 9999) {
+          print('yeah');
+        } else {
+          return;
+        }
+      }
+      stdout.write('Confirm four digit pin: \n');
+      int confirmPinInput = int.parse(stdin.readLineSync()!);
+
+      if (pinInput == confirmPinInput) {
+        pin = pinInput;
+        print('Your pin as been set successfully');
+      } else {
+        print('Pin are not the same try again');
+      }
+
+      while (pinInput != confirmPinInput) {
+        stdout.write('Enter a four digit pin: \n');
+        pinInput = int.parse(stdin.readLineSync()!);
+        stdout.write('Confirm four digit pin: \n');
+        confirmPinInput = int.parse(stdin.readLineSync()!);
+      }
+    } catch (e) {
+      print('Invalid pin');
+    }
+  }
+
+  void showDetails() {
+    print(
+        'Hello $name, your account details are as follow:\nDate of birth: $dateOfBirth/$monthOfBirth/$yearOfBirth, \nAge: $age, \nGender: $gender, \nPhone Number: 0$phoneNumber, \nAccount balance: $accountBalance');
+  }
+
+  void transfer() {
+    stdout.write('Enter recepient account number: ');
+    final int accountNo = int.parse(stdin.readLineSync()!);
+
+    stdout.write('Enter recepient bank name: ');
+    final String bankName = stdin.readLineSync()!;
+
+    stdout.write('Enter recepient account name: ');
+    final String accountName = stdin.readLineSync()!;
+
+    stdout.write('Enter amount: ');
+    final double amount = double.parse(stdin.readLineSync()!);
+
+    stdout.write('Enter pin: ');
+    int pinInput = int.parse(stdin.readLineSync()!);
+
+    while (pin != pinInput) {
+      print('Incorrect pin! Try again');
+
+      stdout.write('Enter pin: ');
+      int pinInput = int.parse(stdin.readLineSync()!);
+      pin = pinInput;
+
+      if (pin == pinInput) {
+        print(
+            '$amount has been transferred to $accountName with $accountNo, $bankName successfully! Thanks for banking with us');
+        break;
+      }
+    }
+  }
+
+  void changeDetails() {
+    try {
+      stdout.write('What do you wish to change: \n1. Pin \n2. Phone Number');
+      final int input = int.parse(stdin.readLineSync()!);
+
+      if (input == 1) {
+        stdout.write('Enter old pin: ');
+        final int oldPin = int.parse(stdin.readLineSync()!);
+
+        stdout.write('Enter new pin: ');
+        final int newPin = int.parse(stdin.readLineSync()!);
+
+        stdout.write('Confirm new pin: ');
+        final int confirmPin = int.parse(stdin.readLineSync()!);
+
+        if (newPin == confirmPin) {
+          pin = newPin;
+          print('Your pin as been changed successfully');
+        } else {
+          print('Pin are not the same try again');
+        }
+      } else if (input == 2) {
+        stdout.write('Enter your new Phone Number: ');
+        final int newPhoneNumber = int.parse(stdin.readLineSync()!);
+        phoneNumber = newPhoneNumber;
+
+        print('Your phone number as been changed successfully');
+      } else {
+        print('Invalid Option! Try again');
+      }
+    } on FormatException {
+      stdout.write('What do you wish to change: \n1. Pin \n2. Phone Number');
+      final int input = int.parse(stdin.readLineSync()!);
+
+      if (input == 1) {
+        stdout.write('Enter old pin: ');
+        final int oldPin = int.parse(stdin.readLineSync()!);
+
+        stdout.write('Enter new pin: ');
+        final int newPin = int.parse(stdin.readLineSync()!);
+
+        stdout.write('Confirm new pin: ');
+        final int confirmPin = int.parse(stdin.readLineSync()!);
+
+        if (newPin == confirmPin) {
+          pin = newPin;
+          print('Your pin as been changed successfully');
+        } else {
+          print('Pin are not the same try again');
+        }
+      } else if (input == 2) {
+        stdout.write('Enter your new Phone Number: ');
+        final int newPhoneNumber = int.parse(stdin.readLineSync()!);
+        phoneNumber = newPhoneNumber;
+
+        print('Your phone number as been changed successfully');
+      } else {
+        print('Invalid Option! Try again');
+      }
+    } catch (e) {
+      print('Something went wrong....');
+    }
+  }
+
+  void buyData() {
+    stdout.write(
+        'Welcome to Aptech Network Services. Choose an option to get started. \n1. Buy Airtime \n2. Buy Data \n');
+    final int option = int.parse(stdin.readLineSync()!);
+    if (option == 1) {
+      stdout.write('Enter an amount: \n');
+      final int amount = int.parse(stdin.readLineSync()!);
+      stdout.write('Enter your phone number: \n');
+      final int number = int.parse(stdin.readLineSync()!);
+      print(
+          '$amount naira airtime has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+    } else if (option == 2) {
+      stdout.write(
+          'Choose a plan \n 1. #100 - 100mb \n 2. #500 - 2.5gb \n 3. #1000 - 1tb \n 4. #1500 - 1tb\n');
+      final int plan = int.parse(stdin.readLineSync()!);
+      if (plan == 1) {
+        stdout.write('Enter your phone number: \n');
+        final int number = int.parse(stdin.readLineSync()!);
+        print(
+            '100mb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+      } else if (plan == 2) {
+        stdout.write('Enter your phone number: \n');
+        final int number = int.parse(stdin.readLineSync()!);
+        print(
+            '2.5gb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+      } else if (plan == 3) {
+        stdout.write('Enter your phone number: \n');
+        final int number = int.parse(stdin.readLineSync()!);
+        print(
+            '1tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+      } else if (plan == 4) {
+        stdout.write('Enter your phone number: \n');
+        final int number = int.parse(stdin.readLineSync()!);
+        print(
+            '5tb data has been gifted to $number \n Thank you for choosing Mhizta Orlah Mobile Banking App');
+      }
+    }
   }
 }
